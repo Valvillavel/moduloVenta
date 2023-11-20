@@ -12,12 +12,14 @@ name:any;
 rep:any;
 total:any;
 items:any;
+prods:any;
 
   constructor(
     private carritoCompras:CarritoService
   ) { }
 
   ngOnInit() {
+    this.prods=this.carritoCompras.pedidos
     this.items=this.carritoCompras.pedidos.length
     this.total=this.calcularTotal()
     console.log()

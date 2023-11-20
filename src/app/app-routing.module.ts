@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { DetailComponent } from './detail/detail.component';
 import { FormComponent } from './form/form.component';
+import { VentaComponent } from './venta/venta.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,10 @@ const routes: Routes = [
   {
     path:'formulario',
     component: FormComponent
+  },
+  {
+    path:'venta',
+    component: VentaComponent
   }
 ];
 
