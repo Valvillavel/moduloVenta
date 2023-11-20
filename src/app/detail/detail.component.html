@@ -1,0 +1,54 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      {{product.name}}
+    </ion-title>
+    <ion-label class="cod">{{product.cod}}</ion-label>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-list>
+    <ion-item >
+      <ion-label>Promocion</ion-label>
+      <ion-label slot="end">{{product.promo}}</ion-label>
+    </ion-item>
+    <ion-item >
+      <ion-label>Tipo de precio</ion-label>
+      <ion-label slot="end">{{product.tipoPrecio}}</ion-label>
+    </ion-item>
+    <ion-item >
+      <ion-label>Precio</ion-label>
+      <ion-label slot="end">{{product.precio}}</ion-label>
+    </ion-item>
+    <ion-item  >
+      <ion-button color="danger" [disabled]="hab" (click)="subtract()"><ion-icon name="remove-outline"></ion-icon></ion-button>
+      <ion-label class="canti" >{{cant}}</ion-label>
+      <ion-button slot="end" [disabled]="habadd" (click)="add()"><ion-icon name="add-outline"></ion-icon></ion-button>
+    </ion-item>
+    <ion-item >
+      <ion-label>Precio</ion-label>
+      <ion-label slot="end">{{precioTot}}</ion-label>
+    </ion-item>
+    <ion-item  >
+      <ion-button slot="end" color="danger"[routerLink] ="['']">ELIMINAR</ion-button>
+      <ion-button slot="end" (click)="addItem()">GUARDAR</ion-button>
+    </ion-item>
+    <ion-item >
+      <ion-label>Items:{{cant}}</ion-label>
+      <ion-label>Puntaje:{{product.puntaje}}</ion-label>
+      <ion-label slot="end">Total:{{calcularTotal() | currency}}</ion-label>
+    </ion-item>
+
+    <ion-item class="spacio" >
+    </ion-item>
+
+    <ion-item >
+      <ion-label color="danger" class="canti" >Restantes:{{stock}}</ion-label>
+    </ion-item>
+    
+  </ion-list>
+  
+
+</ion-content>

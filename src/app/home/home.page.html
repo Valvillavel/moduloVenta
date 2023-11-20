@@ -1,20 +1,49 @@
-<ion-header [translucent]="true">
+<ion-header class="head" [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      LISTA DE PRODUCTOS
     </ion-title>
+    <section class="icons" slot="end">
+      <ion-icon class="chat" name="chatbox-ellipses"></ion-icon>
+      <ion-icon name="bag"></ion-icon>
+      <ion-icon name="close-circle"></ion-icon>
+    </section>
   </ion-toolbar>
+  <ion-label class="date">Date:</ion-label>
+  <ion-searchbar></ion-searchbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-segment (ionChange)="segmentChanged($event)" value="default">
+    <ion-segment-button value="default">
+      <ion-label>TODOS</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="sanat">
+      <ion-label>SANAT PHARMA SRL</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="sanat1">
+      <ion-label>SANAT PHARMA SRL</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="babaria">
+      <ion-label>BABARIA</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="babaria1">
+      <ion-label>BABARIA</ion-label>
+    </ion-segment-button>
+  </ion-segment>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-list>
+    <ion-item *ngFor="let product of totProd">
+      <ion-label [routerLink] ="['/detail', product.id]" >{{product.name}}</ion-label>
+    </ion-item>
+  </ion-list>
+
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-label>Total:{{calcularTotal() | currency}}</ion-label>
+    <ion-button slot="end" color="warning"><ion-icon name="clipboard-outline"></ion-icon></ion-button>
+    <ion-button slot="end" (click)="formView()">Continuar</ion-button>
+  </ion-toolbar>
+</ion-footer>
